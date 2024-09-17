@@ -7,9 +7,9 @@ import os
 class Person():
     def __init__(self, name: str):
         self.__name = name
-        self.__folder_path = f"People\\{self.__name}"
-        self.__ledger_path = f"{self.__folder_path}\\Ledger.txt"
-        self.__references_path = f"{self.__folder_path}\\References.txt"
+        self.__folder_path = f"People/{self.__name}"
+        self.__ledger_path = f"{self.__folder_path}/Ledger.txt"
+        self.__references_path = f"{self.__folder_path}/References.txt"
         
         os.makedirs(self.__folder_path, exist_ok=True)
         
