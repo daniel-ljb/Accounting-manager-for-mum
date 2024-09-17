@@ -5,6 +5,7 @@ class Transaction():
         init = init.split()
         # 123545112 12.17 Session
         # {ms since 1.1.1970} {amount} {description}
+        
         if "." in init[0]:
             self.__time = int(init[0].split(".")[0])
             self.__date = init[0].split(".")[1]
@@ -12,7 +13,12 @@ class Transaction():
             self.__date = init[0]
             date_obj = datetime.strptime(init[0], '%d/%m/%Y')
             self.__time = int(date_obj.timestamp())
+        elif "-" in init[0]:
+            self.__date = init[0]
+            date_obj = datetime.strptime(init[0], '%d-%m-%Y')
+            self.__time = int(date_obj.timestamp())
         else:
+            print(init)
             self.__time = int(init[0])
             date_obj = datetime.fromtimestamp(self.__time)
             self.__date = date_obj.strftime('%d/%m/%Y')
